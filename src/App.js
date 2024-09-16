@@ -78,7 +78,7 @@ function AppContent() {
   };
 
   const clearSearch = () => {
-    setSearchQuery('');
+    // setSearchQuery('');
     setSearchResults(null);
     navigate('/');
   };
