@@ -18,9 +18,9 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="social-links">
-        <a href=""><i className='bx bxl-linkedin-square'></i></a>
-        <a href=""><i className='bx bxl-instagram-alt'></i></a>
-        <a href=""><i className='bx bxl-facebook-circle'></i></a>
+        <a href="https://kingflex.com.au/"><i className='bx bxl-linkedin-square'></i></a>
+        <a href="https://kingflex.com.au/"><i className='bx bxl-instagram-alt'></i></a>
+        <a href="https://kingflex.com.au/"><i className='bx bxl-facebook-circle'></i></a>
       </div>
       <div className="footer-text">
         <p>Copyright &copy; 2024 KING FLEX</p>
