@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-// suggest search result list
 function fuzzyMatch(str, pattern) {
   pattern = pattern.toLowerCase();
   str = str.toLowerCase();
@@ -22,6 +21,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
@@ -29,6 +29,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSuggestions(false);
+        setIsSearchFocused(false);
       }
     };
 
@@ -45,6 +46,14 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (isSearchFocused && isMobile) {
+      document.body.classList.add('search-focused');
+    } else {
+      document.body.classList.remove('search-focused');
+    }
+  }, [isSearchFocused, isMobile]);
+
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
@@ -55,7 +64,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
           fuzzyMatch(product.name, query) || 
           fuzzyMatch(product.description, query)
         )
-        .slice(0, 5); // allow maximum 5  
+        .slice(0, 5);
       setSuggestions(filteredSuggestions);
       setShowSuggestions(true);
     } else {
@@ -68,31 +77,31 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     e.preventDefault();
     onSearch(searchQuery);
     setShowSuggestions(false);
+    setIsSearchFocused(false);
   };
 
   const handleSuggestionClick = (productName) => {
     setSearchQuery(productName);
     onSearch(productName);
     setShowSuggestions(false);
+    setIsSearchFocused(false);
   };
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    navigate('/');  
+    navigate('/');
   };
 
   const handleFocus = () => {
-    if (isMobile) {
-      document.body.classList.add('search-focused');
-    }
+    setIsSearchFocused(true);
   };
 
   const handleBlur = () => {
-    if (isMobile) {
-      setTimeout(() => {
-        document.body.classList.remove('search-focused');
-      }, 200); 
-    }
+    setTimeout(() => {
+      if (!showSuggestions) {
+        setIsSearchFocused(false);
+      }
+    }, 200);
   };
 
   return (
