@@ -65,7 +65,6 @@ function AppContent() {
   }, []);
 
   const handleSearch = (query) => {
-    setSearchQuery(query);
     const results = allProducts.filter(product =>
       product.name.toLowerCase().includes(query.toLowerCase()) ||
       product.description.toLowerCase().includes(query.toLowerCase())
