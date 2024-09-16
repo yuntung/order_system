@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useParams, useNavigate, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams, useNavigate } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetailPage from './components/ProductDetailPage';
 import SearchResults from './components/SearchResult';
@@ -32,7 +32,7 @@ function Footer() {
 function AppContent() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);

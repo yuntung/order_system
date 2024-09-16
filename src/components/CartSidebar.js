@@ -6,13 +6,14 @@ import { X, Trash2, Plus, Minus } from 'lucide-react';
 const CartSidebar = ({ isOpen, onClose, cart, updateCartItemQuantity }) => {
   const navigate = useNavigate();
 
-  const calculateSubtotal = () => {
-    if (!Array.isArray(cart)) return 0;
-    return cart.reduce((total, item) => {
-      const price = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
-      return total + price * item.quantity;
-    }, 0).toFixed(2);
-  };
+  //eslint-disable-next-line no-unused-vars
+  // const calculateSubtotal = () => {
+  //   if (!Array.isArray(cart)) return 0;
+  //   return cart.reduce((total, item) => {
+  //     const price = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
+  //     return total + price * item.quantity;
+  //   }, 0).toFixed(2);
+  // }; 
 
   const handleQuantityChange = (item, change) => {
     const newQuantity = item.quantity + change;

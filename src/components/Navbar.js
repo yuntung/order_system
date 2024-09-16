@@ -98,7 +98,6 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
                   <img src={product.image} alt={product.name} className="suggestion-image" />
                   <div className="suggestion-info">
                     <span className="suggestion-name">{product.name}</span>
-                    {/* <span className="suggestion-price">AUD ${product.price}</span> */}
                   </div>
                 </li>
               ))}
@@ -107,11 +106,13 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
         </div>
         <div className="nav-right">
           <div className="nav-icons">
-            <a href="#"><i className="fas fa-user"></i></a>
-            <a href="#" className="cart-icon" onClick={onCartClick}>
+            <Link to="/user" aria-label="User Profile">
+              <i className="fas fa-user"></i>
+            </Link>
+            <button className="cart-icon" onClick={onCartClick} aria-label="Shopping Cart">
               <i className="fas fa-shopping-cart"></i>
               {cartItemsCount > 0 && <span className="cart-quantity">{cartItemsCount}</span>}
-            </a>
+            </button>
           </div>
         </div>
       </div>
