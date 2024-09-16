@@ -1,0 +1,51 @@
+.search-bar-container {
+    position: relative;
+    width: 300px;
+  }
+  
+  .search-bar-container form {
+    display: flex;
+  }
+  
+  .search-bar-container input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .search-bar-container button {
+    padding: 10px 20px;
+    background-color: #F8AB47;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  
+  .suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  .suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .suggestions-list li:hover,
+  .suggestions-list li.active {
+    background-color: #f0f0f0;
+  }

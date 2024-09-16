@@ -1,0 +1,91 @@
+.banner {
+    background-color: #f0f0f0;
+    padding: 40px 0;
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .banner-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  .banner-content {
+    width: 50%;
+  }
+  
+  .banner h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .banner h2 {
+    font-size: 24px;
+    color: #888;
+    margin-bottom: 30px;
+  }
+  
+  .banner-button {
+    display: inline-block;
+    background-color: #F8AB47;
+    color: #ffffff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border: #F8AB47;
+  }
+  
+  .banner-button:hover {
+    background-color: #e69121;
+  }
+  
+  @media (max-width: 768px) {
+    .banner {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .banner-container {
+      flex-direction: column;
+    }
+  
+    .banner-content {
+      width: 100%;
+    }
+  
+    .banner h1 {
+      font-size: 36px;
+    }
+  
+    .banner h2 {
+      font-size: 18px;
+    }
+  
+    .banner-button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner h1 {
+      font-size: 28px;
+    }
+  
+    .banner h2 {
+      font-size: 16px;
+    }
+  
+    .banner-button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }

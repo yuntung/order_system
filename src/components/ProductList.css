@@ -1,0 +1,123 @@
+.product-list-page .product-list {
+  margin-top: 40px;
+}
+
+.product-list-page .product-list h2 {
+  margin-bottom: 20px;
+}
+
+.product-list-page .product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-list-page .product-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.product-list-page .product-list-image {
+  position: relative;
+  width: 100%;
+  padding-top: 75%; /* 4:3 Aspect Ratio */
+  background-color: #ddd;
+  background-size: cover;
+  background-position: center;
+}
+
+.product-list-page .product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-list-page .product-item:hover .product-overlay {
+  opacity: 1;
+}
+
+.product-list-page .order-button-1 {
+  background-color: #F8AB47;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-list-page .order-button-1:hover {
+  background-color: #e69121;
+}
+
+.product-list-page .product-info {
+  padding: 10px;
+  background-color: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+}
+
+.product-list-page .product-name-1 {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+.product-list-page .product-price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .product-list-page .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .product-list-page .product-list-image {
+    padding-top: 100%; 
+  }
+
+  .product-list-page .product-overlay {
+    top: auto;
+    bottom: 0;
+    height: 100%; 
+  }
+
+  .product-list-page .product-info {
+    padding: 8px;
+    padding-top: 10px;
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  .product-list-page .product-name-1, 
+  .product-list-page .product-price {
+    font-size: 14px;
+  }
+
+  .product-list-page .order-button-1 {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

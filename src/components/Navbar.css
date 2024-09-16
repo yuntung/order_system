@@ -1,0 +1,192 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo img {
+  max-height: 40px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-icons a {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.search-container {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 20px;
+  max-width: 600px;
+}
+
+.search {
+  display: flex;
+  width: 100%;
+}
+
+.search input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  width: calc(100% - 50px);
+}
+
+.search button {
+  padding: 10px;
+  background-color: #f4a261;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  width: 50px;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+.suggestion-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.suggestion-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-name {
+  font-weight: bold;
+}
+
+.suggestion-price {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-quantity {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: nowrap; /* 確保元素不換行 */
+    justify-content: space-between; /* 在元素之間平均分配空間 */
+  }
+
+  .logo {
+    flex: 0 0 auto; /* 防止logo縮小 */
+  }
+
+  .search-container {
+    flex: 1 1 auto; /* 允許搜索欄伸縮，但優先伸展 */
+    margin: 0 10px; /* 在兩側添加一些間距 */
+    min-width: 0; /* 允許搜索欄在必要時縮小 */
+  }
+
+  .nav-right {
+    flex: 0 0 auto; /* 防止圖標區域縮小 */
+  }
+
+  .nav-icons {
+    gap: 10px;
+  }
+
+  .nav-icons a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0 10px; /* 減少側邊padding以節省空間 */
+  }
+
+  .logo img {
+    max-height: 30px; /* 稍微縮小logo */
+  }
+
+  .search-container {
+    margin: 0 5px; /* 減少搜索欄的邊距 */
+  }
+
+  .search input {
+    padding: 5px; /* 減少輸入框的padding */
+    font-size: 0.9em; /* 稍微縮小字體 */
+  }
+
+  .search button {
+    padding: 5px; /* 減少按鈕的padding */
+    width: 40px; /* 稍微縮小按鈕寬度 */
+  }
+
+  .nav-icons {
+    gap: 8px; /* 進一步減少圖標之間的間距 */
+  }
+
+  .nav-icons a {
+    font-size: 1rem; /* 縮小圖標大小 */
+  }
+}
