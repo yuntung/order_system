@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-// 簡單的模糊匹配函數
+// suggest search result list
 function fuzzyMatch(str, pattern) {
   pattern = pattern.toLowerCase();
   str = str.toLowerCase();
@@ -21,6 +21,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
@@ -31,9 +32,16 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
       }
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('resize', handleResize);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -47,7 +55,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
           fuzzyMatch(product.name, query) || 
           fuzzyMatch(product.description, query)
         )
-        .slice(0, 5); // 限制建議數量為5個
+        .slice(0, 5); // allow maximum 5  
       setSuggestions(filteredSuggestions);
       setShowSuggestions(true);
     } else {
@@ -70,7 +78,21 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
 
   const handleLogoClick = (e) => {
     e.preventDefault();
-    navigate('/');  // 使用 navigate 函數導航到主頁
+    navigate('/');  
+  };
+
+  const handleFocus = () => {
+    if (isMobile) {
+      document.body.classList.add('search-focused');
+    }
+  };
+
+  const handleBlur = () => {
+    if (isMobile) {
+      setTimeout(() => {
+        document.body.classList.remove('search-focused');
+      }, 200); 
+    }
   };
 
   return (
@@ -88,6 +110,8 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
               placeholder="Search..." 
               value={searchQuery}
               onChange={handleSearchChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
             <button type="submit"><i className="fas fa-search"></i></button>
           </form>

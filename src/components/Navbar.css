@@ -54,6 +54,10 @@
   border: 1px solid #ddd;
   border-radius: 4px 0 0 4px;
   width: calc(100% - 50px);
+  font-size: 16px; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .search button {
@@ -131,23 +135,29 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
   .navbar-container {
-    flex-wrap: nowrap; /* 確保元素不換行 */
-    justify-content: space-between; /* 在元素之間平均分配空間 */
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
   .logo {
-    flex: 0 0 auto; /* 防止logo縮小 */
+    flex: 0 0 auto;
   }
 
   .search-container {
-    flex: 1 1 auto; /* 允許搜索欄伸縮，但優先伸展 */
-    margin: 0 10px; /* 在兩側添加一些間距 */
-    min-width: 0; /* 允許搜索欄在必要時縮小 */
+    flex: 1 1 auto;
+    margin: 0 10px;
+    min-width: 0;
+    max-width: none;
   }
 
   .nav-right {
-    flex: 0 0 auto; /* 防止圖標區域縮小 */
+    flex: 0 0 auto;
   }
 
   .nav-icons {
@@ -157,36 +167,51 @@
   .nav-icons a {
     font-size: 1.2rem;
   }
+
+  body.search-focused .navbar-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.search-focused .logo,
+  body.search-focused .nav-right {
+    display: none;
+  }
+
+  body.search-focused .search-container {
+    margin: 10px 0;
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   .navbar-container {
-    padding: 0 10px; /* 減少側邊padding以節省空間 */
+    padding: 0 10px;
   }
 
   .logo img {
-    max-height: 30px; /* 稍微縮小logo */
+    max-height: 30px;
   }
 
   .search-container {
-    margin: 0 5px; /* 減少搜索欄的邊距 */
+    margin: 0 5px;
   }
 
   .search input {
-    padding: 5px; /* 減少輸入框的padding */
-    font-size: 0.9em; /* 稍微縮小字體 */
+    padding: 5px;
+    font-size: 0.9em;
   }
 
   .search button {
-    padding: 5px; /* 減少按鈕的padding */
-    width: 40px; /* 稍微縮小按鈕寬度 */
+    padding: 5px;
+    width: 40px;
   }
 
   .nav-icons {
-    gap: 8px; /* 進一步減少圖標之間的間距 */
+    gap: 8px;
   }
 
   .nav-icons a {
-    font-size: 1rem; /* 縮小圖標大小 */
+    font-size: 1rem;
   }
 }
