@@ -130,15 +130,24 @@
 @media (max-width: 768px) {
   .navbar-top {
     padding: 5px 10px;
+    position: relative;
   }
 
+  .logo {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    top: 50%; 
+    transform: translate(-50%, -50%); 
+  }
   .logo img {
     height: 70px;
   }
 
   .account-icon,
   .cart-icon {
-    font-size: 1rem;
+    z-index: 1;
+    font-size: 0.7rem;
   }
 
   .account-icon i,
