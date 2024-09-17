@@ -32,7 +32,6 @@ function Footer() {
 function AppContent() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  // const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
@@ -75,16 +74,6 @@ function AppContent() {
 
   const handleProductSelect = (product) => {
     navigate(`/product/${product.id}`);
-  };
-
-  const clearSearch = () => {
-    // setSearchQuery('');
-    setSearchResults(null);
-    navigate('/');
-  };
-
-  const onLogoClick = () => {
-    clearSearch();
   };
 
   const updateCart = (product, quantity, selectedSize) => {
@@ -163,7 +152,6 @@ function AppContent() {
         onCartClick={toggleCart}
         onSearch={handleSearch}
         products={allProducts}
-        onLogoClick={onLogoClick}
       />
       <div className="content">
         <Routes>
