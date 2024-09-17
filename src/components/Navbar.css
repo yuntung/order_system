@@ -3,10 +3,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: #fff;
   padding: 10px 0;
   z-index: 1000;
   transition: all 0.3s ease;
+  padding-top: env(safe-area-inset-top);
 }
 
 .navbar-container {
@@ -159,7 +160,7 @@
     order: 3;
     margin: 10px 0;
     flex-basis: 100%;
-    max-width: none;
+    max-width: 300px;
   }
 
   .nav-right {
@@ -186,33 +187,6 @@
 
   .search input {
     font-size: 16px;
-  }
-
-  body.search-focused .navbar {
-    height: 100vh;
-    overflow-y: auto;
-  }
-
-  body.search-focused .navbar-container {
-    flex-direction: column;
-    height: 100%;
-  }
-
-  body.search-focused .logo,
-  body.search-focused .nav-right {
-    display: none;
-  }
-
-  body.search-focused .search-container {
-    margin: 20px 0;
-    width: 100%;
-  }
-
-  body.search-focused .suggestions {
-    position: static;
-    max-height: none;
-    flex-grow: 1;
-    overflow-y: auto;
   }
 }
 
