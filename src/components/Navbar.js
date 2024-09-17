@@ -20,8 +20,6 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
   const searchRef = useRef(null);
   const navigate = useNavigate();
 
@@ -29,30 +27,14 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
         setShowSuggestions(false);
-        setIsSearchFocused(false);
       }
     };
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
     document.addEventListener('mousedown', handleClickOutside);
-    window.addEventListener('resize', handleResize);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    if (isSearchFocused && isMobile) {
-      document.body.classList.add('search-focused');
-    } else {
-      document.body.classList.remove('search-focused');
-    }
-  }, [isSearchFocused, isMobile]);
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -77,14 +59,12 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     e.preventDefault();
     onSearch(searchQuery);
     setShowSuggestions(false);
-    setIsSearchFocused(false);
   };
 
   const handleSuggestionClick = (productName) => {
     setSearchQuery(productName);
     onSearch(productName);
     setShowSuggestions(false);
-    setIsSearchFocused(false);
   };
 
   const handleLogoClick = (e) => {
@@ -92,26 +72,25 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
     navigate('/');
   };
 
-  const handleFocus = () => {
-    setIsSearchFocused(true);
-  };
-
-  const handleBlur = () => {
-    setTimeout(() => {
-      if (!showSuggestions) {
-        setIsSearchFocused(false);
-      }
-    }, 200);
-  };
-
   return (
     <nav className="navbar">
-      <div className="navbar-content">
+      <div className="navbar-top">
+        <Link to="/user" className="account-icon">
+          <i className="fas fa-user"></i>
+          <span>Account</span>
+        </Link>
         <div className="logo">
           <Link to="/" onClick={handleLogoClick}>
             <img src="/KING_FLEX.png" alt="KingFlex Logo" />
           </Link>
         </div>
+        <button className="cart-icon" onClick={onCartClick}>
+          <i className="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+          {cartItemsCount > 0 && <span className="cart-quantity">{cartItemsCount}</span>}
+        </button>
+      </div>
+      <div className="navbar-bottom">
         <div className="search-container" ref={searchRef}>
           <form className="search" onSubmit={handleSearchSubmit}>
             <input 
@@ -119,8 +98,6 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
               placeholder="Search products, brands, and more..." 
               value={searchQuery}
               onChange={handleSearchChange}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
             />
             <button type="submit"><i className="fas fa-search"></i></button>
           </form>
@@ -129,24 +106,11 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
               {suggestions.map((product, index) => (
                 <li key={index} onClick={() => handleSuggestionClick(product.name)}>
                   <img src={product.image} alt={product.name} className="suggestion-image" />
-                  <div className="suggestion-info">
-                    <span className="suggestion-name">{product.name}</span>
-                  </div>
+                  <span className="suggestion-name">{product.name}</span>
                 </li>
               ))}
             </ul>
           )}
-        </div>
-        <div className="nav-right">
-          <div className="nav-icons">
-            <Link to="/user" aria-label="Account">
-              <i className="fas fa-user"></i>
-            </Link>
-            <button className="cart-icon" onClick={onCartClick} aria-label="Cart">
-              <i className="fas fa-shopping-cart"></i>
-              {cartItemsCount > 0 && <span className="cart-quantity">{cartItemsCount}</span>}
-            </button>
-          </div>
         </div>
       </div>
     </nav>
