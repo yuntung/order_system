@@ -141,37 +141,34 @@
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0;
+    padding: 10px 0;
   }
 
   .navbar-container {
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 0 10px;
   }
 
   .logo {
-    order: 2;
+    order: 1;
     flex: 1;
-    text-align: center;
+    text-align: left;
   }
 
   .search-container {
-    order: 1;
-    margin: 0 0 10px 0;
+    order: 3;
+    margin: 10px 0;
     flex-basis: 100%;
     max-width: none;
   }
 
   .nav-right {
-    order: 3;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 10px;
+    order: 2;
+    width: auto;
   }
 
   .nav-icons {
-    width: 100%;
-    justify-content: space-between;
+    gap: 15px;
   }
 
   .nav-icons a, .nav-icons button {
@@ -242,7 +239,7 @@
   }
 
   .nav-icons {
-    gap: 5px;
+    gap: 10px;
   }
 
   .nav-icons a, .nav-icons button {

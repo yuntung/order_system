@@ -107,6 +107,11 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
+        <div className="logo">
+          <Link to="/" onClick={handleLogoClick}>
+            <img src="/tab.png" alt="KingFlex Logo" />
+          </Link>
+        </div>
         <div className="search-container" ref={searchRef}>
           <form className="search" onSubmit={handleSearchSubmit}>
             <input 
@@ -132,16 +137,8 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
             </ul>
           )}
         </div>
-        <div className="logo">
-          <Link to="/" onClick={handleLogoClick}>
-            <img src="/tab.png" alt="KingFlex Logo" />
-          </Link>
-        </div>
         <div className="nav-right">
           <div className="nav-icons">
-            <Link to="/" aria-label="Home">
-              <i className="fas fa-home"></i>
-            </Link>
             <Link to="/user" aria-label="Account">
               <i className="fas fa-user"></i>
             </Link>
