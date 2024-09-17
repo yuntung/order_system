@@ -106,17 +106,17 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
+      <div className="navbar-content">
         <div className="logo">
           <Link to="/" onClick={handleLogoClick}>
-            <img src="/tab.png" alt="KingFlex Logo" />
+            <img src="/KING_FLEX.png" alt="KingFlex Logo" />
           </Link>
         </div>
         <div className="search-container" ref={searchRef}>
           <form className="search" onSubmit={handleSearchSubmit}>
             <input 
               type="text" 
-              placeholder="Search..." 
+              placeholder="Search products, brands, and more..." 
               value={searchQuery}
               onChange={handleSearchChange}
               onFocus={handleFocus}
