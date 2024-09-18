@@ -17,67 +17,17 @@
 
 .logo {
   display: flex;
-  justify-content: center;
-  flex: 1;
+  align-items: center;
 }
 
 .logo img {
   height: 30px;
 }
 
-.account-icon,
-.cart-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #000;
-  text-decoration: none;
-  font-size: 0.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: relative; 
-  padding: 5px; 
-}
-
-.account-icon i,
-.cart-icon i {
-  font-size: 1.2rem;
-  margin-bottom: 2px;
-}
-
-.cart-quantity {
-  /* position: absolute;
-  top: 0;
-  right: -5px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 5px;
-  font-size: 0.7rem; */
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 5px;
-  font-size: 0.7rem;
-  min-width: 18px; 
-  height: 18px; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navbar-bottom {
-  padding: 10px 15px;
-  background-color: #FEFEFE; 
-}
-
 .search-container {
+  flex-grow: 1;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 15px;
   position: relative;
 }
 
@@ -113,6 +63,49 @@
 
 .search:focus-within button {
   background-color: #e89c3e;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.account-icon,
+.cart-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+  font-size: 0.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+.account-icon i,
+.cart-icon i {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.cart-quantity {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .suggestions {
@@ -176,7 +169,7 @@
     z-index: 1;
     font-size: 0.7rem;
     padding: 8px;
-    position: relative; /* Ensure relative positioning */
+    position: relative;
   }
 
   .account-icon i,
@@ -200,8 +193,10 @@
     justify-content: center;
   }
 
-  .navbar-bottom {
-    padding: 5px 10px;
+  .search-container {
+    order: 1;
+    width: 100%;
+    margin: 10px 0 0;
   }
 
   .search input[type="text"] {
