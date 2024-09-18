@@ -147,6 +147,7 @@
   font-weight: bold;
 }
 
+/* Mobile styles */
 @media (max-width: 768px) {
   .navbar-top {
     padding: 5px 10px;
@@ -169,7 +170,7 @@
     z-index: 1;
     font-size: 0.7rem;
     padding: 8px;
-    position: relative; /* Ensure relative positioning */
+    position: relative;
   }
 
   .account-icon i,
