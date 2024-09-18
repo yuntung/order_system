@@ -80,7 +80,7 @@
 @media (max-width: 480px) {
   .banner {
     margin-top: 90px; /* Further reduced for smaller screens */
-    padding: 15px 0;
+    padding: 25px 0;
   }
 
   .banner h1 {

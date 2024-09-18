@@ -219,7 +219,10 @@
     height: 40px;
   }
 
-  .account-icon,
+  .account-icon {
+    font-size: 0.6rem;
+    margin: 1px;
+  }
   .cart-icon {
     font-size: 0.6rem;
     padding: 6px;
