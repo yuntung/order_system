@@ -176,6 +176,7 @@
     z-index: 1;
     font-size: 0.7rem;
     padding: 8px;
+    position: relative; /* Ensure relative positioning */
   }
 
   .account-icon i,
@@ -184,11 +185,19 @@
   }
 
   .cart-quantity {
-    top: 2px;
-    right: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 1px;
     font-size: 0.6rem;
     min-width: 16px; 
     height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navbar-bottom {
@@ -225,6 +234,9 @@
     min-width: 14px; 
     height: 14px;
     font-size: 0.5rem;
+    padding: 1px;
+    top: -2px;
+    right: -2px;
   }
 
   .search input[type="text"] {
