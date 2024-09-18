@@ -49,7 +49,7 @@
 
 @media (max-width: 768px) {
   .banner {
-    margin-top: 120px; /* Increase this value for mobile devices */
+    margin-top: 20px; /* Reduced from 120px to 20px */
     padding: 20px 0;
   }
 
@@ -62,26 +62,34 @@
   }
 
   .banner h1 {
-    font-size: 36px;
+    font-size: 32px; /* Slightly reduced from 36px */
+    margin-bottom: 15px; /* Added margin-bottom */
   }
 
   .banner h2 {
     font-size: 18px;
+    margin-bottom: 20px; /* Reduced from 30px */
   }
 
   .banner-button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
+  .banner {
+    margin-top: 15px; /* Further reduced for smaller screens */
+    padding: 15px 0;
+  }
+
   .banner h1 {
-    font-size: 28px;
+    font-size: 24px; /* Further reduced from 28px */
   }
 
   .banner h2 {
     font-size: 16px;
+    margin-bottom: 15px; /* Further reduced */
   }
 
   .banner-button {
