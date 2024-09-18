@@ -85,8 +85,8 @@
 
 .search input[type="text"]:focus {
   border-color: #F8AB47;
-  box-shadow: 0 0 0 1px #F8AB47;
-  -webkit-box-shadow: 0 0 0 1px #F8AB47;
+  /* box-shadow: 0 0 0 1px #F8AB47;
+  -webkit-box-shadow: 0 0 0 1px #F8AB47; */
 }
 
 .search input[type="text"]::-moz-focus-inner {
