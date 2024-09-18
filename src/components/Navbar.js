@@ -75,11 +75,22 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
   return (
     <nav className="navbar">
       <div className="navbar-top">
+        <Link to="/user" className="account-icon">
+          <i className="fas fa-user"></i>
+          <span>Account</span>
+        </Link>
         <div className="logo">
           <Link to="/" onClick={handleLogoClick}>
             <img src="/KING_FLEX.png" alt="KingFlex Logo" />
           </Link>
         </div>
+        <button className="cart-icon" onClick={onCartClick}>
+          <i className="fas fa-shopping-cart"></i>
+          <span>Cart</span>
+          {cartItemsCount > 0 && <span className="cart-quantity">{cartItemsCount}</span>}
+        </button>
+      </div>
+      <div className="navbar-bottom">
         <div className="search-container" ref={searchRef}>
           <form className="search" onSubmit={handleSearchSubmit}>
             <input 
@@ -100,17 +111,6 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
               ))}
             </ul>
           )}
-        </div>
-        <div className="navbar-actions">
-          <Link to="/user" className="account-icon">
-            <i className="fas fa-user"></i>
-            <span>Account</span>
-          </Link>
-          <button className="cart-icon" onClick={onCartClick}>
-            <i className="fas fa-shopping-cart"></i>
-            <span>Cart</span>
-            {cartItemsCount > 0 && <span className="cart-quantity">{cartItemsCount}</span>}
-          </button>
         </div>
       </div>
     </nav>
