@@ -1,17 +1,29 @@
+.cart-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
 .cart-sidebar {
   position: fixed;
   top: 0;
-  right: -400px; /* 初始狀態隱藏在右側 */
-  width: 400px;
+  right: -100%;
+  width: 100%;
   height: 100vh;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease-in-out;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-sidebar.open {
-  right: 0; /* 顯示側邊欄 */
+  right: 0;
 }
 
 .cart-sidebar-content {
@@ -82,7 +94,7 @@
   color: #888;
 }
 
-.remove-btn:hover{
+.remove-btn:hover {
   color: #e54141;
 }
 
@@ -106,9 +118,9 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .cart-sidebar {
-    width: 100%;
-    right: -100%;
+    width: 400px;
+    right: -400px;
   }
 }
