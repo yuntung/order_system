@@ -87,7 +87,7 @@ function Navbar({ cartItemsCount, onCartClick, onSearch, products }) {
       <form className="search" onSubmit={handleSearchSubmit}>
         <input 
           type="text" 
-          placeholder="Search products, brands, and more..." 
+          placeholder="Search product..." 
           value={searchQuery}
           onChange={handleSearchChange}
         />

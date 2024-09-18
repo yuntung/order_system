@@ -59,7 +59,7 @@ function SearchBar({ onSearch, products }) {
           type="text"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder="Search..."
+          placeholder="Search product..."
         />
         <button type="submit">Search</button>
       </form>
