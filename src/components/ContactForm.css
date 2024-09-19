@@ -47,6 +47,11 @@
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
+  background-color: white;
+  color: #333;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .form-group input[type="text"]:focus,
