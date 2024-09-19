@@ -29,10 +29,10 @@
   background-position: center;
 }
 
-/* 新增：針對桌面版本的 "No image available" 樣式 */
+
 @media (min-width: 769px) {
   .product-list-page .product-list-image[style*="no_image.png"] {
-    background-size: 60%;
+    background-size: 40%;
     background-repeat: no-repeat;
   }
 }
