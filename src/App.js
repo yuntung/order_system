@@ -40,11 +40,19 @@ function AppContent() {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+  }, []);
 
   const generateSizes = () => {
     const sizes = [25, 30];
@@ -56,17 +64,17 @@ function AppContent() {
 
   useEffect(() => {
     setAllProducts([
-      { id: 1, name: "Duct Tape", image: "/images/305_Wedge_blocks.png", price: '17.00', description: "Roll for Duct Tape" },
+      { id: 1, name: "Duct Tape", image: "/images/no_image.png", price: '17.00', description: "Roll for Duct Tape" },
       { id: 2, name: "AbleFlex", image: "/images/AbleFlex.png", price: '17.00', description: "Roll for AbleFlex" },
-      { id: 3, name: "Anchor Block Set", image: "/images/Anchor_block_Set.png", price: '17.00', description: "Anchor 100 per box/ Blocks 100 per box" },
-      { id: 4, name: "Duct Chairs", image: "/images/Duct_chairs.png", price: '17.00', description: "100 per bag for Duct Chairs", sizes: generateSizes() },
+      { id: 3, name: "Anchor Block Set", image: "/images/Anchor_block_Wedges.png", price: '17.00', description: "Anchor 100 per box/ Blocks 100 per box" },
+      { id: 4, name: "Duct Chairs", image: "/images/Duct_chair.png", price: '17.00', description: "100 per bag for Duct Chairs", sizes: generateSizes() },
       { id: 5, name: "Duct", image: "/images/Duct.png", price: '17.00', description: "70 x 20mm (3770m) for Duct" },
-      { id: 6, name: "Grout Tube", image: "/images/Grout_Tube.png", price: '17.00', description: "Roll for Grout Tube" },
+      { id: 6, name: "Grout Tube", image: "/images/no_image.png", price: '17.00', description: "Roll for Grout Tube" },
       { id: 7, name: "Jack Wedge", image: "/images/Jack_Wedge.png", price: '17.00', description: "Set for 12.7 mm Jack Wedge" },
-      { id: 8, name: "PC Strand", image: "/images/PC_strand.png", price: '17.00', description: "Ton for 12.7mm strand" },
-      { id: 9, name: "Round Corrugate Duct", image: "/images/Wedge_block_steel.png", price: '17.00', description: "Meter for Round Corrugate Duct" },
-      { id: 10, name: "Wedges", image: "/images/Wedges.png", price: '17.00', description: "Pcs for 12.7 mm Wedges (2 pieces)" },
-      { id: 11, name: "Staple", image: "/images/Staple_pin.png", price: '17.00', description: "Box for Staple" },
+      { id: 8, name: "PC Strand", image: "/images/PC_Strand.png", price: '17.00', description: "Ton for 12.7mm strand" },
+      { id: 9, name: "Round Corrugate Duct", image: "/images/no_image.png", price: '17.00', description: "Meter for Round Corrugate Duct" },
+      { id: 10, name: "Wedges", image: "/images/wedges.png", price: '17.00', description: "Pcs for 12.7 mm Wedges (2 pieces)" },
+      { id: 11, name: "Staple", image: "/images/Staple.png", price: '17.00', description: "Box for Staple" },
     ]);
   }, []);
 
@@ -141,6 +149,17 @@ function AppContent() {
     if (!product) {
       return <div>Product not found</div>;
     }
+
+    const handleLogin = (userData) => {
+      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
+    };
+  
+    const handleLogout = () => {
+      setUser(null);
+      localStorage.removeItem('user');
+      navigate('/');
+    };
 
     return (
       <ProductDetailPage 
