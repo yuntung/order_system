@@ -30,7 +30,10 @@ function Footer() {
 }
 
 function AppContent() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
@@ -38,6 +41,10 @@ function AppContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const generateSizes = () => {
     const sizes = [25, 30];
@@ -78,20 +85,18 @@ function AppContent() {
 
   const updateCart = (product, quantity, selectedSize) => {
     setCart(prevCart => {
-      const existingItem = prevCart.find(item => 
+      const updatedCart = prevCart.slice(); // Create a copy of the cart
+      const existingItem = updatedCart.find(item => 
         item.id === product.id && 
         (product.name === "Duct Chairs" ? item.selectedSize === selectedSize : true)
       );
       if (existingItem) {
-        return prevCart.map(item =>
-          item.id === product.id && 
-          (product.name === "Duct Chairs" ? item.selectedSize === selectedSize : true)
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
+        existingItem.quantity += quantity;
       } else {
-        return [...prevCart, { ...product, quantity, selectedSize }];
+        updatedCart.push({ ...product, quantity, selectedSize });
       }
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Update localStorage
+      return updatedCart;
     });
     setModalMessage(`Added ${quantity} ${product.name}${product.name === "Duct Chairs" ? ` (${selectedSize}mm)` : ''} to cart.`);
     setIsModalOpen(true);
@@ -99,18 +104,18 @@ function AppContent() {
 
   const updateCartItemQuantity = (productId, newQuantity, selectedSize) => {
     setCart(prevCart => {
-      if (newQuantity <= 0) {
-        return prevCart.filter(item => 
-          !(item.id === productId && 
-            (item.name === "Duct Chairs" ? item.selectedSize === selectedSize : true))
-        );
-      }
-      return prevCart.map(item =>
+      const updatedCart = prevCart.filter(item => 
+        !(item.id === productId && 
+          (item.name === "Duct Chairs" ? item.selectedSize === selectedSize : true) && 
+          newQuantity <= 0)
+      ).map(item =>
         item.id === productId && 
         (item.name === "Duct Chairs" ? item.selectedSize === selectedSize : true)
           ? { ...item, quantity: newQuantity }
           : item
       );
+      localStorage.setItem('cart', JSON.stringify(updatedCart)); // Update localStorage
+      return updatedCart;
     });
   };
 
@@ -121,6 +126,7 @@ function AppContent() {
   const handleOrderComplete = () => {
     setIsConfirmationModalOpen(true);
     setCart([]);
+    localStorage.removeItem('cart'); // Clear cart from localStorage
   };
 
   const handleCloseConfirmationModal = () => {

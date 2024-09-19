@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Trash2, Plus, Minus } from 'lucide-react';
 import './CartSidebar.css';
 
 const CartSidebar = ({ isOpen, onClose, cart, updateCartItemQuantity }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const handleQuantityChange = (item, change) => {
     const newQuantity = item.quantity + change;
