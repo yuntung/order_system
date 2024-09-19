@@ -40,19 +40,11 @@ function AppContent() {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      setUser(JSON.parse(loggedInUser));
-    }
-  }, []);
 
   const generateSizes = () => {
     const sizes = [25, 30];
@@ -149,17 +141,6 @@ function AppContent() {
     if (!product) {
       return <div>Product not found</div>;
     }
-
-    const handleLogin = (userData) => {
-      setUser(userData);
-      localStorage.setItem('user', JSON.stringify(userData));
-    };
-  
-    const handleLogout = () => {
-      setUser(null);
-      localStorage.removeItem('user');
-      navigate('/');
-    };
 
     return (
       <ProductDetailPage 
