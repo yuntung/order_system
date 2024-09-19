@@ -32,7 +32,7 @@
 
 @media (min-width: 769px) {
   .product-list-page .product-list-image[style*="no_image.png"] {
-    background-size: 40%;
+    background-size: 80%;
     background-repeat: no-repeat;
   }
 }
