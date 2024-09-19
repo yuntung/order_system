@@ -29,6 +29,14 @@
   background-position: center;
 }
 
+/* 新增：針對桌面版本的 "No image available" 樣式 */
+@media (min-width: 769px) {
+  .product-list-page .product-list-image[style*="no_image.png"] {
+    background-size: 60%;
+    background-repeat: no-repeat;
+  }
+}
+
 .product-list-page .product-overlay {
   position: absolute;
   top: 0;
@@ -72,7 +80,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
 
 .product-list-page .product-name-1 {

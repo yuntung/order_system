@@ -6,8 +6,8 @@ function Banner() {
   const slides = [
     {
       title: "KING FLEX",
-      subtitle: "ONLINE ORDER SYSTEM",
-      buttonText: "Order Now",
+      subtitle: "EXPLORE OUR RANGE",
+      buttonText: "View Products",
       image: "/images/banner1.jpg", // make sure route is correct
     },
     {
